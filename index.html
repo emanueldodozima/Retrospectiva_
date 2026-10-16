@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>Para Emilly ❤️</title>
+
+<style>
+:root {
+  --bg: #101010;
+  --card: #202020;
+  --green: #1ed760;
+  --pink: #ff75a0;
+  --white: #ffffff;
+  --muted: #b9b9b9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.app {
+  width: 100%;
+  max-width: 650px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 22px 20px 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.brand {
+  color: var(--green);
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: -0.5px;
+}
+
+.tag {
+  color: var(--muted);
+  font-size: 11px;
+  text-align: right;
+}
+
+.progress {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 25px;
+}
+
+.progress span {
+  height: 4px;
+  background: #424242;
+  border-radius: 10px;
+  flex: 1;
+  transition: background .3s;
+}
+
+.progress span.active {
+  background: var(--green);
+}
+
+.screen {
+  display: none;
+  flex: 1;
+  animation: appear .45s ease;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 17px;
+}
+
+h1 {
+  font-size: clamp(37px, 10vw, 63px);
+  line-height: 1.02;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: clamp(28px, 7vw, 43px);
+  line-height: 1.08;
+  margin-bottom: 17px;
+  letter-spacing: -1px;
+}
+
+p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.green {
+  color: var(--green);
+}
+
+.pink {
+  color: var(--pink);
+}
+
+.hero {
+  min-height: 55vh;
+  justify-content: center;
+}
+
+.heart {
+  display: inline-block;
+  color: var(--pink);
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.big-number {
+  font-size: clamp(75px, 22vw, 125px);
+  font-weight: 900;
+  letter-spacing: -7px;
+  line-height: 1;
+  color: var(--green);
+  margin: 20px 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.small-label {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card {
+  background: var(--card);
+  padding: 22px;
+  border-radius: 18px;
+  margin: 20px 0;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.stat {
+  min-width: 0;
+  padding: 18px 14px;
+  border-radius: 16px;
+  background: var(--card);
+  border-bottom: 3px solid var(--green);
+}
+
+.stat:nth-child(2n) {
+  border-color: var(--pink);
+}
+
+.stat strong {
+  display: block;
+  font-size: clamp(24px, 7vw, 39px);
+  overflow-wrap: anywhere;
+  margin: 9px 0;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.photo-frame {
+  width: 100%;
+  height: 310px;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, #355a3e, transparent 45%),
+    linear-gradient(135deg, #242424, #151515);
+  border: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 0;
+  position: relative;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  text-align: center;
+  padding: 20px;
+  color: #ddd;
+}
+
+.photo-placeholder .emoji {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.photo-placeholder p {
+  font-size: 13px;
+}
+
+.quote {
+  font-size: clamp(23px, 6vw, 34px);
+  line-height: 1.3;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+.letter {
+  background: #fff0f4;
+  color: #34212a;
+  border-radius: 18px;
+  padding: 24px;
+  margin: 20px 0;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.letter p {
+  color: #5c4350;
+  font-size: 15px;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 15px;
+}
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  padding: 15px 22px;
+  font-weight: bold;
+  transition: transform .2s, opacity .2s;
+}
+
+.btn:active {
+  transform: scale(.96);
+}
+
+.btn-primary {
+  background: var(--green);
+  color: #101010;
+  flex: 1;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid #555;
+}
+
+.btn:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.final-heart {
+  font-size: 90px;
+  margin: 15px 0;
+  animation: heartbeat 1.5s infinite;
+}
+
+.footer {
+  text-align: center;
+  color: #666;
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 5;
+  animation: floatUp 2.8s ease-out forwards;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-180px) rotate(35deg);
+  }
+}
+
+@media (max-width: 380px) {
+  .app { padding: 18px 15px 25px; }
+  .card { padding: 17px; }
+  .stat { padding: 14px 10px; }
+  .photo-frame { height: 250px; }
+  .btn { padding: 14px 17px; }
+}
+</style>
+</head>
+
+<body>
+<main class="app">
+
+  <header class="top">
+    <div class="brand">♥ OUR WRAPPED</div>
+    <div class="tag">UMA HISTÓRIA<br>CHAMADA NÓS</div>
+  </header>
+
+  <div class="progress" id="progress"></div>
+
+  <!-- TELA 1 -->
+  <section class="screen active hero">
+    <div class="eyebrow">Sua retrospectiva de amor</div>
+    <h1>Para<br><span class="green">Emilly</span><br>com amor <span class="heart">♥</span></h1>
+    <p>Algumas histórias merecem ser lembradas para sempre. Esta é a nossa.</p>
+    <div style="margin-top:28px;color:#777;font-size:12px">
+      NOSSA HISTÓRIA • DESDE 15.05.2026
+    </div>
+  </section>
+
+  <!-- TELA 2 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 01 • O começo</div>
+    <h2>Foi aqui que nossa história começou.</h2>
+    <div class="card">
+      <div class="small-label">Data especial</div>
+      <h2 class="green" style="margin-top:12px">15 de maio de 2026</h2>
+      <p>Um dia que ganhou um significado diferente porque foi o começo de nós.</p>
+    </div>
+    <p>Se eu pudesse guardar um pedacinho do tempo, guardaria a lembrança de quando começamos a construir nossa história.</p>
+  </section>
+
+  <!-- TELA 3 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 02 • Nosso tempo</div>
+    <h2>O tempo que estamos escrevendo juntos.</h2>
+    <div class="big-number" id="days">0</div>
+    <div class="small-label">dias desde o início do namoro</div>
+    <div class="card">
+      <h3>Um dia de cada vez. ❤️</h3>
+      <p>O contador se atualiza automaticamente. Cada novo dia é mais uma página da nossa história.</p>
+    </div>
+  </section>
+
+  <!-- TELA 4 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 03 • Nossas estatísticas</div>
+    <h2>Os números da nossa história.</h2>
+    <p>Preencha com lembranças verdadeiras de vocês. Toque em uma estatística para editar.</p>
+
+    <div class="stats-grid">
+      <button class="stat" data-stat="calls">
+  <span>📞 CHAMADAS</span>
+  <strong id="stat-calls">115</strong>
+  <span>De chamadas que tivemos</span>
+</button>
+
+<button class="stat" data-stat="songs">
+  <span>🎵 MÚSICAS</span>
+  <strong id="stat-songs">Amor Complocado</strong>
+  <span>Nossa Música</span>
+</button>
+
+<button class="stat" data-stat="laughs">
+  <span>😂 RISADAS</span>
+  <strong id="stat-laughs">∞</strong>
+  <span>Risadas que compartilhamos</span>
+</button>
+
+<button class="stat" data-stat="nickname">
+  <span>💗 APELIDO</span>
+  <strong id="stat-nickname">Bombonzinho</strong>
+  <span>Meu jeito de te chamar</span>
+</button>
+      </>
+    </div>
+    <p style="font-size:12px;margin-top:15px">Os dados são seus. Nada é inventado pelo site.</p>
+  </section>
+
+  <!-- TELA 5 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 04 • Uma lembrança</div>
+    <h2>Um pedacinho de nós.</h2>
+    <p>Coloque aqui uma foto especial de vocês.</p>
+
+    <div class="photo-frame">
+      <img src="foto1.jpg" alt="Nossa primeira lembrança"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="photo-placeholder" style="display:none">
+        <div class="emoji">📸❤️</div>
+        <p>Adicione uma foto chamada <b>foto1.jpg</b><br>na mesma pasta deste site.</p>
+      </div>
+    </div>
+    <p>Não é só uma foto. É um momento que merece continuar vivo na memória.</p>
+  </section>
+
+  <!-- TELA 6 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 05 • Mais lembranças</div>
+    <h2>Quero guardar muitos momentos assim.</h2>
+
+    <div class="photo-frame">
+      <img src="foto2.jpg" alt="Outra lembrança nossa"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="photo-placeholder" style="display:none">
+        <div class="emoji">🖼️💚</div>
+        <p>Adicione uma foto chamada <b>foto2.jpg</b><br>na mesma pasta deste site.</p>
+      </div>
+    </div>
+    <p>Que ainda existam muitas fotos, conversas, sorrisos e histórias para contar.</p>
+  </section>
+
+  <!-- TELA 7 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 06 • Nossa música</div>
+    <h2>Se o nosso amor fosse uma música...</h2>
+    <div class="card" style="text-align:center;padding:30px 18px">
+      <div style="font-size:55px">🎧</div>
+      <div class="quote green" id="song-name">Sorriso Respladecente</div>
+      <p id="song-desc">Nossa música.</p>
+      <button class="btn btn-secondary" id="edit-song" style="margin-top:20px">
+        Personalizar música
+      </button>
+    </div>
+    <p>Você pode adicionar o nome da música que marcou a história de vocês.</p>
+  </section>
+
+  <!-- TELA 8 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 07 • O que eu sinto</div>
+    <h2>Tem coisas que eu nunca quero deixar de te dizer.</h2>
+    <div class="card">
+      <div class="quote pink">Você é especial para mim. ❤️</div>
+      <p>Obrigado por fazer parte da minha vida, pelas conversas, pelos momentos bons e por tudo o que ainda podemos viver.</p>
+    </div>
+    <p>Não precisamos de uma história perfeita. Quero que a nossa seja construída com carinho, respeito, sinceridade e companheirismo.</p>
+  </section>
+
+  <!-- TELA 9 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 08 • Uma cartinha</div>
+    <h2>De mim para você.</h2>
+    <div class="letter">
+      <p id="letter-text">Oi minha princesa, hoje é um dia muito especial pra mim e pra gente, e foi o dia que eu decidi que queria viver com você pra sempre, e a gente superou várias coisas juntos e que continuamos assim, EU TE AMO muito mais do que eu possa explicar ou falar, por que uma simples palavra não e capaz de descrever meu amor por você,eu tenho muito orgulho de você meu amor por sempre ser essa garota maravilhosa, gentil, alegre e eu sempre vou querer tirar um sorriso seu ou irrita você também kkkkk,mais pra mim você é a garota mais especial do mundo meu amor, EU TE AMO MUITOOOO MEU AMOR 💘</p>
+    </div>
+    <button class="btn btn-secondary" id="edit-letter">Editar cartinha</button>
+  </section>
+
+  <!-- TELA 10 -->
+  <section class="screen">
+    <div class="eyebrow">Capítulo 09 • Nosso futuro</div>
+    <h2>Ainda há tantas páginas em branco.</h2>
+    <div class="photo-frame" style="height:220px">
+      <div class="photo-placeholder">
+        <div class="emoji">🌎💗</div>
+        <p>Novos lugares, novas memórias<br>e sonhos para construir.</p>
+      </div>
+    </div>
+    <p>Quero que a gente continue aprendendo um com o outro, celebrando as pequenas coisas e trabalhando juntos para realizar nossos sonhos.</p>
+  </section>
+
+  <!-- TELA 11 -->
+  <section class="screen center">
+    <div class="eyebrow">A última tela... por enquanto</div>
+    <div class="final-heart">❤️</div>
+    <h1>Você é parte da minha história, Emilly.</h1>
+    <p>Não existe estatística capaz de resumir tudo o que uma pessoa significa para outra.</p>
+    <div class="card" style="width:100%">
+      <h3 class="green">Minha mensagem final para você</h3>
+      <p id="final-message">Entre tantas coisas que a vida pode me trazer, fico feliz por ter encontrado você no meu caminho. Que possamos escrever muitos capítulos bonitos, sempre com amor, respeito e verdade. Eu te amo, Emilly! ❤️</p>
+    </div>
+    <button class="btn btn-primary" id="surprise">✨ Abrir surpresa</button>
+    <p id="surprise-text" style="display:none;margin-top:22px;color:#fff;font-weight:bold">
+      Se eu pudesse escolher de novo, escolheria conhecer você e construir nossa história mais uma vez. Te amo! 💖
+    </p>
+  </section>
+
+  <nav class="nav">
+    <button class="btn btn-secondary" id="prev" disabled>← Voltar</button>
+    <button class="btn btn-primary" id="next">Continuar →</button>
+  </nav>
+
+  <div class="footer">FEITO COM AMOR • PARA EMILLY ❤️</div>
+</main>
+
+<script>
+/* =====================================
+   PERSONALIZE AS ESTATÍSTICAS AQUI
+   ===================================== */
+
+const namoro = {
+  inicio: "2026-05-15",
+
+  // Troque os valores pelos dados reais.
+  chamadas: "115h",
+  musicas: "Amor Complicado",
+  risadas: "∞",
+  apelido: "Bombomzinho",
+
+  musicaFavorita: "SORRISO RESPLADECENTE",
+  descricaoMusica: "Nossa Música."
+};
+
+/* =====================================
+   CONTADOR DE DIAS
+   ===================================== */
+
+function atualizarDias() {
+  const inicio = new Date(namoro.inicio + "T00:00:00");
+  const hoje = new Date();
+
+  inicio.setHours(0, 0, 0, 0);
+  hoje.setHours(0, 0, 0, 0);
+
+  const dias = Math.floor((hoje - inicio) / 86400000);
+
+  document.getElementById("days").textContent =
+    dias >= 0 ? dias.toLocaleString("pt-BR") : "0";
+}
+
+/* =====================================
+   ESTATÍSTICAS
+   ===================================== */
+
+function atualizarEstatisticas() {
+  document.getElementById("stat-calls").textContent = namoro.chamadas;
+  document.getElementById("stat-songs").textContent = namoro.musicas;
+  document.getElementById("stat-laughs").textContent = namoro.risadas;
+  document.getElementById("stat-nickname").textContent = namoro.apelido;
+
+  document.getElementById("song-name").textContent =
+    namoro.musicaFavorita;
+  document.getElementById("song-desc").textContent =
+    namoro.descricaoMusica;
+}
+
+document.querySelectorAll("[data-stat]").forEach(botao => {
+  botao.addEventListener("click", () => {
+    const chave = botao.dataset.stat;
+
+    const campos = {
+      calls: ["chamadas", "Quantas chamadas vocês já tiveram?"],
+      songs: ["musicas", "Quantas músicas especiais vocês têm?"],
+      laughs: ["risadas", "Escreva um número ou uma frase sobre as risadas"],
+      nickname: ["apelido", "Qual apelido carinhoso você usa?"]
+    };
+
+    const [propriedade, pergunta] = campos[chave];
+    const resposta = prompt(pergunta, namoro[propriedade]);
+
+    if (resposta !== null && resposta.trim() !== "") {
+      namoro[propriedade] = resposta.trim();
+      atualizarEstatisticas();
+    }
+  });
+});
+
+document.getElementById("edit-song").addEventListener("click", () => {
+  const nome = prompt("Qual é a música especial de vocês?",
+                      namoro.musicaFavorita);
+
+  if (nome !== null && nome.trim()) {
+    namoro.musicaFavorita = nome.trim();
+  }
+
+  const descricao = prompt("Por que essa música lembra vocês?",
+                           namoro.descricaoMusica);
+
+  if (descricao !== null && descricao.trim()) {
+    namoro.descricaoMusica = descricao.trim();
+  }
+
+  atualizarEstatisticas();
+});
+
+/* =====================================
+   CARTINHA PERSONALIZÁVEL
+   ===================================== */
+
+document.getElementById("edit-letter").addEventListener("click", () => {
+  const atual = document.getElementById("letter-text").textContent;
+  const nova = prompt("Escreva sua cartinha para a Emilly:", atual);
+
+  if (nova !== null && nova.trim()) {
+    document.getElementById("letter-text").textContent = nova;
+  }
+});
+
+/* =====================================
+   NAVEGAÇÃO ENTRE AS TELAS
+   ===================================== */
+
+const telas = [...document.querySelectorAll(".screen")];
+const barra = document.getElementById("progress");
+const voltar = document.getElementById("prev");
+const continuar = document.getElementById("next");
+
+let atual = 0;
+
+telas.forEach(() => {
+  const segmento = document.createElement("span");
+  barra.appendChild(segmento);
+});
+
+function mostrarTela(indice) {
+  atual = Math.max(0, Math.min(indice, telas.length - 1));
+
+  telas.forEach((tela, i) => {
+    tela.classList.toggle("active", i === atual);
+  });
+
+  [...barra.children].forEach((segmento, i) => {
+    segmento.classList.toggle("active", i <= atual);
+  });
+
+  voltar.disabled = atual === 0;
+
+  continuar.textContent =
+    atual === telas.length - 1 ? "↻ Rever do início" : "Continuar →";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+voltar.addEventListener("click", () => mostrarTela(atual - 1));
+
+continuar.addEventListener("click", () => {
+  if (atual === telas.length - 1) {
+    mostrarTela(0);
+  } else {
+    mostrarTela(atual + 1);
+  }
+});
+
+/* =====================================
+   SURPRESA FINAL
+   ===================================== */
+
+document.getElementById("surprise").addEventListener("click", () => {
+  const texto = document.getElementById("surprise-text");
+
+  texto.style.display = "block";
+  document.getElementById("surprise").textContent = "❤️ Surpresa aberta!";
+
+  for (let i = 0; i < 24; i++) {
+    const coracao = document.createElement("div");
+    coracao.className = "sparkle";
+    coracao.textContent = ["❤️", "💚", "💖", "✨"][i % 4];
+    coracao.style.left = Math.random() * 95 + "vw";
+    coracao.style.top = (50 + Math.random() * 40) + "vh";
+    coracao.style.fontSize = (16 + Math.random() * 20) + "px";
+
+    document.body.appendChild(coracao);
+    setTimeout(() => coracao.remove(), 3000);
+  }
+});
+
+atualizarDias();
+atualizarEstatisticas();
+mostrarTela(0);
+</script>
+</body>
+</html>
